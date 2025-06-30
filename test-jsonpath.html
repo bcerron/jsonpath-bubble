@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Probar JSONPath desde jsDelivr</title>
-  <script src="https://cdn.jsdelivr.net/gh/bcerron/jsonpath-bubble@main/jsonpath.fixed.min.js"></script>
-</head>
-<body>
-  <h1>Ver consola del navegador</h1>
-  <script>
-    // Esperamos a que el script esté cargado
-    setTimeout(() => {
-      if (typeof JSONPath === 'undefined') {
-        console.error("❌ JSONPath no está disponible.");
-      } else {
-        conso
+    <head>
+        <title>Probar JSONPath desde jsDelivr</title>
+        <script src="https://cdn.jsdelivr.net/gh/bcerron/jsonpath-bubble@main/jsonpath.fixed.min.js"></script>
+    </head>
+    <body>
+        <h1>Ver consola del navegador</h1>
+        <script>
+            // Esperamos a que el script esté cargado
+            setTimeout(() => {
+                if (typeof JSONPath === 'undefined') {
+                    console.error('❌ JSONPath no está disponible.');
+                } else {
+                    console.log('✅ JSONPath está cargado:', typeof JSONPath.JSONPath);
+                    const result = JSONPath.JSONPath({
+                        path: '$..token',
+                        json: {
+                            user: { token: 'abc' },
+                            session: { token: 'xyz' },
+                        },
+                    });
+                    console.log('Resultado:', result);
+                }
+            }, 100);
+        </script>
+    </body>
+</html>
